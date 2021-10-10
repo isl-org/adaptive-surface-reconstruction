@@ -1,0 +1,2 @@
+include adaptivesurfacereconstruction/*.so*
+include adaptivesurfacereconstruction/asr_resources/*

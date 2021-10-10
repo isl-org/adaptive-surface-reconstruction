@@ -1,0 +1,21 @@
+# clip values for the signed and unsigned distance values 
+# relative to the voxel size.
+sdf_clip: 2
+udf_clip: 2
+no_colmap_data: false # do not use the samples generated with colmap
+model:
+  with_importance: all # add channels that are normalized with the importance values
+  normalized_channels: 8 # how many channels to normalize with the importance values
+  residual_skip_connection: true # use a residual connection for the last skip connection
+traindata:
+  random_crop: 0 # do not randomly crop the meshes
+  exclude_boundary: true # exclude the boundary from the loss
+  shift_range: 1.0 # the range of the position shift for evaluating the distance decode
+  num_parallel_calls: 16 # how many workers to use for data loading
+loss:
+  ramp_normal_loss: true # use a ramp for the normal loss
+  clip_signed_loss: true # clip the signed distance loss
+  unsigned_weight: 1.0   # loss importance relative to the signed distance loss
+  squared_signed_loss: true   # use a squared loss for the signed distance loss
+  squared_unsigned_loss: true # use a squared loss for the unsigned distance loss
+  squared_normal_loss: true   # use a squared loss for the normal loss
