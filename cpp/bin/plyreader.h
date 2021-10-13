@@ -47,12 +47,14 @@ public:
         int callback_idata;
     };
     struct Element {
+	Element() : count(0) {};
         std::string name;
         size_t count;
         std::vector<Property> properties;
         std::function<void(size_t, size_t)> callback;
     };
     struct Header {
+	Header() : size(0) {};
         size_t size;
         Format format;
         std::vector<Element> elements;
