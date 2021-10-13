@@ -39,6 +39,7 @@ public:
     };
     enum Format { ASCII, BINARY_LE, BINARY_BE };
     struct Property {
+	Property() : is_list(false), list_type(DataType::UNKNOWN), scalar_type(DataType::UNKNOWN), callback_idata(0) {};
         std::string name;
         bool is_list;
         DataType list_type;
@@ -54,7 +55,7 @@ public:
         std::function<void(size_t, size_t)> callback;
     };
     struct Header {
-	Header() : size(0) {};
+	Header() : size(0),format(Format::ASCII) {};
         size_t size;
         Format format;
         std::vector<Element> elements;
