@@ -76,11 +76,13 @@ ExternalProject_Add(
     ext_open3d
     PREFIX open3d
     GIT_REPOSITORY https://github.com/isl-org/Open3D.git
-    GIT_TAG benjaminum/pr_install_ml_ops
+    GIT_TAG master
     GIT_SHALLOW YES
     UPDATE_COMMAND ""
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+        -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+        -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_EXAMPLES=OFF
         -DBUILD_ISPC_MODULE=OFF
@@ -104,13 +106,12 @@ add_dependencies(Open3DHelper ext_open3d)
 set_property(TARGET Open3DHelper PROPERTY IMPORTED_LOCATION "${INSTALL_DIR}/lib/libOpen3D.so" )
 target_compile_features(Open3DHelper INTERFACE cxx_std_14)
 target_compile_definitions(Open3DHelper INTERFACE _GLIBCXX_USE_CXX11_ABI=$<BOOL:${GLIBCXX_USE_CXX11_ABI}>)
-target_include_directories(Open3DHelper SYSTEM INTERFACE 
-        "${INSTALL_DIR}/include"
-        "${INSTALL_DIR}/include/open3d/3rdparty"
-        "${BINARY_DIR}/tbb/src/ext_tbb/include"
+set( OPEN3D_INCLUDE_DIRS "${INSTALL_DIR}/include;${INSTALL_DIR}/include/open3d/3rdparty;${BINARY_DIR}/tbb/src/ext_tbb/include" )
+# create dirs in configure phase to avoid a non critical cmake error.
+file( MAKE_DIRECTORY ${OPEN3D_INCLUDE_DIRS} )
+target_include_directories(Open3DHelper INTERFACE ${OPEN3D_INCLUDE_DIRS}
         )
 target_link_libraries(Open3DHelper INTERFACE 
-        # -Wl,--as-needed Open3D
         "${BINARY_DIR}/tbb/src/ext_tbb-build/libtbb_static.a"
         "${BINARY_DIR}/tbb/src/ext_tbb-build/libtbbmalloc_static.a"
        )
