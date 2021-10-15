@@ -2,6 +2,9 @@ cmake_minimum_required( VERSION 3.18 )
 
 project(adaptivesurfacereconstruction VERSION 0.1.0)
 
+option(BUILD_PYTHON_MODULE  "Build the python module" ON)
+option(ENABLE_APPIMAGE  "Enables the target 'appimage' for building the AppImage" OFF)
+
 if( NOT CMAKE_BUILD_TYPE )
         set( CMAKE_BUILD_TYPE "Release" CACHE STRING "Build configuration 'Release' or 'Debug'." FORCE )
 endif()
@@ -15,10 +18,14 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
 add_subdirectory( cpp/lib lib ) 
 add_subdirectory( cpp/bin bin ) 
-add_subdirectory( cpp/pybind pybind ) 
 
-add_subdirectory( python ) 
-add_subdirectory( appimage ) 
+if( BUILD_PYTHON_MODULE )
+        add_subdirectory( cpp/pybind pybind ) 
+        add_subdirectory( python ) 
+endif()
+if( ENABLE_APPIMAGE )
+        add_subdirectory( appimage ) 
+endif()
 
 add_custom_target( apply-style 
         COMMAND ${CMAKE_COMMAND}

@@ -3,7 +3,10 @@ set( appdir "${CMAKE_CURRENT_BINARY_DIR}/AppDir" )
 file( GLOB_RECURSE asr_model_files ${PROJECT_SOURCE_DIR}/models/v*/model*.pt )
 list( APPEND asr_model_files dummy_resource_file )
 
-find_program(linuxdeploy_binary linuxdeploy-x86_64.AppImage)
+find_program(linuxdeploy_binary linuxdeploy-x86_64.AppImage )
+if( NOT linuxdeploy_binary )
+message( FATAL_ERROR "Building the appimage requires 'linuxdeploy-x86_64.AppImage' from https://github.com/linuxdeploy/linuxdeploy/releases/tag/continuous")
+endif()
 
 add_custom_target( appimage
         COMMAND ${CMAKE_COMMAND} -E touch dummy_resource_file
