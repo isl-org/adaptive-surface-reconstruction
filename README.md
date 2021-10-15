@@ -12,7 +12,13 @@ point clouds to create surfaces with varying level of details.
 
 ## Dependencies
 
-- Tensorflow 2.4.1
+## Packages for building the library
+- Pytorch 1.8.1 (can be installed with `python -m pip install torch==1.8.1+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`)
+- On Ubuntu the following packages are required: patchelf, xorg-dev, libglu1-mesa-dev, python3-dev
+  These can be installed with `apt install patchelf xorg-dev libglu1-mesa-dev python3-dev`
+
+## Packages required for training the network
+- Tensorflow 2.6.0
 - Open3D 0.14 or later with ML module (https://github.com/intel-isl/Open3D/)
 - Tensorpack DataFlow (for reading data, ```pip install --upgrade git+https://github.com/tensorpack/dataflow.git```)
 - python-prctl (needed by Tensorpack DataFlow; depends on libcap-dev, install with ```apt install libcap-dev``` )
@@ -40,14 +46,13 @@ make
 The python package can be installed globally with the target ```pip-install-package```.
 ```bash
 # inside the build directory
-make pip-install-package
+make install-pip-package
 ```
 
 A portable AppImage of the binary can be created with the target ```appimage```.
 This requires the linuxdeploy tool from https://github.com/linuxdeploy/linuxdeploy/releases/tag/continuous
 ```bash
 # inside the build directory
-
 # creates appimage/asrtool-0.1.0-x86_64.AppImage inside the build directory
 make appimage 
 ```
