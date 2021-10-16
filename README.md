@@ -8,6 +8,18 @@ This repository contains code for the ICCV 2021 paper
 The code implements our surface reconstruction, which can fuse large scale
 point clouds to create surfaces with varying level of details.
 
+If you find this repository useful please cite out [paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Ummenhofer_Adaptive_Surface_Reconstruction_With_Multiscale_Convolutional_Kernels_ICCV_2021_paper.pdf).
+
+```
+@InProceedings{Ummenhofer_2021_ICCV,
+    author    = {Ummenhofer, Benjamin and Koltun, Vladlen},
+    title     = {Adaptive Surface Reconstruction With Multiscale Convolutional Kernels},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {5651-5660}
+}
+```
 
 
 ## Dependencies
@@ -57,6 +69,24 @@ This requires the linuxdeploy tool from https://github.com/linuxdeploy/linuxdepl
 make appimage 
 ```
 
+
+## Directory structure
+
+The project consists of a python module, a cpp library, an example binary, and training code.
+Note that the python module is required for the training code to work.
+The following gives an overview of how the code is organized.
+```
+├─ appimage               # Scripts and resources for building an AppImage for the binary
+├─ cmake                  # CMake files for finding dependencies
+├─ cpp
+    ├─ bin                # Code for the example binary
+    ├─ lib                # Code and headers for the library
+    ├─ pybind             # Code for the python binding
+├─ models                 # Code for training the models
+├─ python                 # Python code and scripts for the python module
+├─ utils                  # Contains general utility scripts
+    ├─ deeplearningutils  # General training utils for tf/torch
+```
 
 ## License
 
