@@ -2,13 +2,13 @@
 
 This repository contains code for the ICCV 2021 paper
 
-   B. Ummenhofer and V. Koltun. "Adaptive Surface Reconstruction with Multiscale Convolutional Kernels". ICCV 2021.
+*B. Ummenhofer and V. Koltun. "Adaptive Surface Reconstruction with Multiscale Convolutional Kernels". ICCV 2021.*
 
 
 The code implements our surface reconstruction, which can fuse large scale
-point clouds to create surfaces with varying level of details.
+point clouds to create surfaces with varying levels of details.
 
-If you find this repository useful please cite out [paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Ummenhofer_Adaptive_Surface_Reconstruction_With_Multiscale_Convolutional_Kernels_ICCV_2021_paper.pdf).
+If you find this repository useful please cite our [paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Ummenhofer_Adaptive_Surface_Reconstruction_With_Multiscale_Convolutional_Kernels_ICCV_2021_paper.pdf).
 
 ```
 @InProceedings{Ummenhofer_2021_ICCV,
@@ -40,7 +40,7 @@ If you find this repository useful please cite out [paper](https://openaccess.th
 - SciPy
 
 The versions match the configuration that we have tested on a system with Ubuntu 18.04.
-We recommend to use the latest versions for all packages.
+We recommend using the latest versions for all packages.
 
 
 ## Build instructions
@@ -50,7 +50,6 @@ The library, python bindings, and example binary can be build with
 ```bash
 mkdir build
 cd build
-
 cmake ..
 make
 ```
