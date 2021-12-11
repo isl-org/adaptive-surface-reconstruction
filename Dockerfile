@@ -12,9 +12,8 @@ RUN apt-get update && apt-get install -y \
   libtbb-dev \
   patchelf \
   wget \
-  xorg-dev
-
-#   && rm -rf /var/lib/apt/lists/*
+  xorg-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 # Miniconda
 ENV PATH="/root/miniconda3/bin:${PATH}"

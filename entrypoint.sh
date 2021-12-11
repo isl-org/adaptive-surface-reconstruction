@@ -15,7 +15,9 @@ python -m pip install torch==1.8.2+cpu -f https://download.pytorch.org/whl/lts/1
 python -m pip install open3d==0.14.1 zstandard msgpack msgpack-numpy
 
 
-cd adaptive-surface-reconstruction
+echo "$(pwd)"
+ls -l
+# cd adaptive-surface-reconstruction
 pushd datasets
 python create_t10k_msgpacks.py --attribution_file_only
 popd
