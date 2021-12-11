@@ -62,6 +62,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact ${{ matrix.configuration }}
-          path: README.md
+          name: artifact ${{ matrix.configuration }}
+          path: |
+            build/python/python_package/dist/a*.whl
+            build/appimage/asr*.AppImage
 

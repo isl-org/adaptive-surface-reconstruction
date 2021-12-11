@@ -23,6 +23,6 @@ RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.s
  && conda --version
 
 
-COPY entrypoint.sh /entrypoint.sh
+COPY docker_entrypoint.sh /docker_entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/docker_entrypoint.sh"]
