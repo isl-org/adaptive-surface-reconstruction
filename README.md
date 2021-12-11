@@ -25,7 +25,7 @@ If you find this repository useful please cite our [paper](https://openaccess.th
 ## Dependencies
 
 ## Packages for building the library
-- Pytorch 1.8.1 (can be installed with `python -m pip install torch==1.8.1+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`)
+- Pytorch 1.8.2 (can be installed with `python -m pip install torch==1.8.2+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`)
 - On Ubuntu the following packages are required: patchelf, xorg-dev, libglu1-mesa-dev, python3-dev
   These can be installed with `apt install patchelf xorg-dev libglu1-mesa-dev python3-dev`
 
