@@ -1,3 +1,5 @@
 build
 __pycache__
+datasets/t10k
+dummy_resource_file
 *.ply
