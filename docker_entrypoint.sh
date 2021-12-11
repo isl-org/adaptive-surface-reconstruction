@@ -46,5 +46,5 @@ cmake \
 df -h
 make
 
-mv python/python_package/dist/a*.whl appimage/asr*.AppImage .
+mv python/python_package/dist/a*.whl appimage/asr*.AppImage . || true
 popd
