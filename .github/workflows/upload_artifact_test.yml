@@ -22,12 +22,33 @@ jobs:
 
     strategy:
       matrix:
-        python_version: [3.6, 3.7, 3.8, 3.9]
+        configuration: [py36, py37, py38, py39, appimage]
+        include:
+          - configuration: py36
+            python_version: 3.6
+            build_python: ON
+            build_appimage: OFF
+          - configuration: py37
+            python_version: 3.7
+            build_python: ON
+            build_appimage: OFF
+          - configuration: py38
+            python_version: 3.8
+            build_python: ON
+            build_appimage: OFF
+          - configuration: py39
+            python_version: 3.9
+            build_python: ON
+            build_appimage: OFF
+          - configuration: appimage
+            python_version: 3.9
+            build_python: OFF
+            build_appimage: ON
 
     env:
       PYTHON_VERSION: ${{ matrix.python_version }}
-      BUILD_PYTHON_MODULE: ON
-      BUILD_APPIMAGE: OFF
+      BUILD_PYTHON_MODULE: ${{ matrix.build_python }}
+      BUILD_APPIMAGE: ${{ matrix.build_appimage }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,6 +62,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact ${{ matrix.python_version }}
+          name: my-artifact ${{ matrix.configuration }}
           path: README.md
 
