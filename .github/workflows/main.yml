@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
       
       - name: dockertest
-        uses: 'docker'
-        image: 'Dockerfile'
+        uses: 'Dockerfile'
+        # image: 'Dockerfile'
         args:
           - Bla
