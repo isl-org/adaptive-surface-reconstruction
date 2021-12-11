@@ -36,7 +36,6 @@ jobs:
           echo test, and deploy your project.
       
       - name: dockertest
-        uses: 'Dockerfile'
-        # image: 'Dockerfile'
-        args:
-          - Bla
+        uses: ./.github/actions/docker-action
+        with:
+          who-to-greet: "Bla"
