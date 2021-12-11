@@ -63,7 +63,7 @@ endif()
 
 FetchContent_Declare(
         libtorch
-        URL https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.8.1%2Bcpu.zip
+        URL https://download.pytorch.org/libtorch/lts/1.8/cpu/libtorch-shared-with-deps-1.8.2%2Bcpu.zip
 )
 FetchContent_GetProperties(libtorch)
 if(NOT libtorch_POPULATED)
@@ -78,7 +78,7 @@ ExternalProject_Add(
     ext_open3d
     PREFIX open3d
     GIT_REPOSITORY https://github.com/isl-org/Open3D.git
-    GIT_TAG master
+    GIT_TAG v0.14.1
     GIT_SHALLOW YES
     UPDATE_COMMAND ""
     CMAKE_ARGS

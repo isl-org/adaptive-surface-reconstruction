@@ -24,7 +24,7 @@ def write_compressed_msgpack(data, output_path):
 
     compressor = zstd.ZstdCompressor(level=22)
     with open(output_path, 'wb') as f:
-        print('writing', outfilepath)
+        print('writing', output_path)
         f.write(compressor.compress(msgpack.packb(data, use_bin_type=True)))
 ```
 
