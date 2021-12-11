@@ -21,7 +21,7 @@ if [ -d build ]; then
     rm -rf build
 fi
 mkdir build
-cd build
+pushd build
 
 if [ "$BUILD_APPIMAGE" = "ON" ]; then
     mkdir linuxdeploy
@@ -45,3 +45,6 @@ cmake \
 
 df -h
 make
+
+mv python/python_package/dist/a*.whl appimage/asr*.AppImage .
+popd

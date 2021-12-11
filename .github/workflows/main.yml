@@ -63,6 +63,6 @@ jobs:
         with:
           name: artifact ${{ matrix.configuration }}
           path: |
-            build/python/python_package/dist/a*.whl
-            build/appimage/asr*.AppImage
+            build/a*.whl
+            build/asr*.AppImage
 
