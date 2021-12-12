@@ -25,13 +25,13 @@ If you find this repository useful please cite our [paper](https://openaccess.th
 ## Dependencies
 
 ## Packages for building the library
-- Pytorch 1.8.1 (can be installed with `python -m pip install torch==1.8.1+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`)
+- Pytorch 1.8.2 (can be installed with `python -m pip install torch==1.8.2+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`)
 - On Ubuntu the following packages are required: patchelf, xorg-dev, libglu1-mesa-dev, python3-dev
   These can be installed with `apt install patchelf xorg-dev libglu1-mesa-dev python3-dev`
 
 ## Packages required for training the network
 - Tensorflow 2.6.0
-- Open3D 0.14 or later with ML module (https://github.com/intel-isl/Open3D/)
+- Open3D 0.14 or later with ML module (https://github.com/isl-org/Open3D/)
 - Tensorpack DataFlow (for reading data, ```pip install --upgrade git+https://github.com/tensorpack/dataflow.git```)
 - python-prctl (needed by Tensorpack DataFlow; depends on libcap-dev, install with ```apt install libcap-dev``` )
 - msgpack (```pip install msgpack``` )

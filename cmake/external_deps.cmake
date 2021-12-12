@@ -3,8 +3,12 @@ include(ExternalProject)
 
 find_package( Python COMPONENTS Interpreter )
 
-# show downloads during configure step
-set( FETCHCONTENT_QUIET OFF CACHE BOOL "" FORCE )
+# show downloads during configure step but not on github
+if(DEFINED ENV{GITHUB_WORKSPACE})
+        set( FETCHCONTENT_QUIET ON CACHE BOOL "" FORCE )
+else()
+        set( FETCHCONTENT_QUIET OFF CACHE BOOL "" FORCE )
+endif()
 
 find_program( patchelf_binary patchelf REQUIRED )
 

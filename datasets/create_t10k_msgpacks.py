@@ -30,7 +30,8 @@ def read_compressed_msgpack(path, decompressor=None):
 
 def select_good_meshes(info_dict, data_dir):
     # select only good meshes
-    raw_meshes_dir = os.path.join(data_dir,'raw_meshes')
+    if data_dir:
+        raw_meshes_dir = os.path.join(data_dir,'raw_meshes')
     selected_meshes = []
     attribution = []
     selection = {
@@ -63,7 +64,8 @@ def select_good_meshes(info_dict, data_dir):
                 break;
         if selected and info['License'] in licenses:
             attribution.append('"{}"({}) by {} is licensed under {}'.format(info['title'].strip(), info['Thing ID'], info['author'], info['License']))
-            selected_meshes.append(glob(os.path.join(raw_meshes_dir,key+'.*'))[0])
+            if data_dir:
+                selected_meshes.append(glob(os.path.join(raw_meshes_dir,key+'.*'))[0])
 
     return selected_meshes, attribution
 
@@ -105,11 +107,14 @@ def create_data(mesh_paths, output_path):
 def main():
     parser = argparse.ArgumentParser(description="Create data files for training",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("--data_dir", type=str, required=True, help="The path to the Thingi10k dataset root.")
+    parser.add_argument("--data_dir", type=str, default=None, help="The path to the Thingi10k dataset root.")
     parser.add_argument("--output_dir", type=str, default=os.path.join(os.path.dirname(__file__), 't10k'), help="The path to the output dir")
     parser.add_argument("--attribution_file_only", action="store_true", help="Create only the attribution file")
 
     args = parser.parse_args()
+    if not args.attribution_file_only and not args.data_dir:
+        print("Please specify the path to the Thingi10K root with '--data-dir'")
+        return
 
     info_dict = read_compressed_msgpack(os.path.join(os.path.dirname(__file__),'thingi10k_info.msgpack.zst'))
 

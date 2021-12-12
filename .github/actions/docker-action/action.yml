@@ -1,0 +1,6 @@
+# action.yml
+name: 'Build and run docker container'
+description: 'Builds and runs the docker container for the Dockerfile in the root'
+runs:
+  using: 'docker'
+  image: '../../../Dockerfile'
