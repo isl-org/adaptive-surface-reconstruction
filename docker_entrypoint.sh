@@ -5,6 +5,7 @@ echo "==========================================================================
 echo " PYTHON_VERSION         $PYTHON_VERSION"
 echo " BUILD_PYTHON_MODULE    $BUILD_PYTHON_MODULE"
 echo " BUILD_APPIMAGE         $BUILD_APPIMAGE"
+echo " MAKE_FLAGS             $MAKE_FLAGS"
 echo "================================================================================"
 
 conda create -y -n asr python=$PYTHON_VERSION
@@ -44,7 +45,7 @@ cmake \
     ..
 
 df -h
-make
+make $MAKE_FLAGS
 
 mv python/python_package/dist/a*.whl appimage/asr*.AppImage . || true
 popd

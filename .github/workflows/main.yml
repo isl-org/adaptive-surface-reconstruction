@@ -49,6 +49,7 @@ jobs:
       PYTHON_VERSION: ${{ matrix.python_version }}
       BUILD_PYTHON_MODULE: ${{ matrix.build_python }}
       BUILD_APPIMAGE: ${{ matrix.build_appimage }}
+      MAKE_FLAGS: -j2
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -67,7 +68,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: artifact ${{ matrix.configuration }}
+          name: artifact_${{ matrix.configuration }}
           path: |
             build/a*.whl
             build/asr*.AppImage
