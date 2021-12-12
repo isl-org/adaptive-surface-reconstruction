@@ -59,9 +59,10 @@ jobs:
         run: |
           pwd
           ls
-          wget https://github.com/isl-org/adaptive-surface-reconstruction/releases/download/models/models.zip
+          wget -nv https://github.com/isl-org/adaptive-surface-reconstruction/releases/download/models/models.zip
           unzip -v models.zip
           rm models.zip
+          ls models/v0
 
       - name: Build inside container
         uses: ./.github/actions/docker-action
