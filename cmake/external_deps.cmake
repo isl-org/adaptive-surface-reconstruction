@@ -97,6 +97,7 @@ ExternalProject_Add(
         -DBUILD_PYTHON_MODULE=OFF
         -DBUILD_PYTORCH_OPS=ON
         -DBUILD_WEBRTC=OFF
+        -DGLIBCXX_USE_CXX11_ABI=OFF
 )
 # we patch the runpath of the op library to make the binary work inside the build directory.
 ExternalProject_Add_Step(ext_open3d patchelf
