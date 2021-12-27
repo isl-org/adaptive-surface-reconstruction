@@ -157,7 +157,7 @@ std::shared_ptr<ASRTriangleMesh> ReconstructSurface(
                 params.point_radius_scale, 0, params.octree_max_depth);
         CreateDualVertexIndices(dual_vertex_indices, *tree);
 
-        grids = CreateGridsFromOctree(*tree, 5, false);
+        grids = CreateGridsFromOctree(*tree, 5, true);
     }
 
     torch::Dict<std::string, torch::Tensor> input_dict;

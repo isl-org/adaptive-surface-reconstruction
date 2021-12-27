@@ -154,9 +154,6 @@ void RemoveConnectedComponents(std::vector<float>& vertices,
     }
     std::sort(component_sizes_idx.begin(), component_sizes_idx.end(),
               std::greater<>());
-    for (auto x : component_sizes_idx) {
-        std::cerr << x.first << " " << x.second << "\n";
-    }
 
     std::unordered_set<int64_t> components_to_keep;
     for (int64_t i = 0; i < std::min(int64_t(component_sizes.size()),
@@ -165,9 +162,6 @@ void RemoveConnectedComponents(std::vector<float>& vertices,
         if (component_sizes_idx[i].first >= minimum_component_size) {
             components_to_keep.insert(component_sizes_idx[i].second);
         }
-    }
-    for (auto x : components_to_keep) {
-        std::cerr << x << "\n";
     }
 
     std::vector<int8_t> mask(component.size(), 0);
@@ -192,7 +186,6 @@ void FilterTriangleMeshVertices(std::vector<float>& vertices,
             vertices[prefix_sum[i] * 3 + 2] = vertices[i * 3 + 2];
         }
     }
-    std::cerr << "prefix_sum_back " << prefix_sum.back() << "\n";
     vertices.resize(prefix_sum.back() * 3);
 
     std::vector<int32_t> tmp_triangles;
