@@ -30,22 +30,21 @@ enum VERBOSITY_LEVELS { DEBUG = 0, INFO = 1, WARN = 2, ERROR = 3 };
 /// \param print_callback Callback function used for printing.
 /// \param levels The verbosity levelsfor which the callback should be
 /// installed.
-void SetPrintCallbackFunction(
-        std::function<void(const std::string&)> print_callback,
-        std::vector<int> levels);
+void SetPrintCallbackFunction(std::function<void(const char*)> print_callback,
+                              std::vector<int> levels);
 
 /// Sets the resource dir to the \p path .
-void SetResourceDir(const std::string& path);
+void SetResourceDir(const char* path);
 
 /// Returns the resource dir. The initial default resource dir is
 /// <tt>$ORIGIN/asr_resources</tt>
-std::string GetResourceDir();
+const char* GetResourceDir();
 
 /// Returns the version string of the library.
-std::string GetVersionStr();
+const char* GetVersionStr();
 
 /// Returns the third-party notices as string.
-std::string GetThirdPartyNotices();
+const char* GetThirdPartyNotices();
 
 /// Struct with the parameters for the ReconstructSurface function.
 /// Use InitReconstructSurfaceParams() to create instances.

@@ -30,14 +30,13 @@
 
 ASR_NAMESPACE_BEGIN
 
-std::function<void(const std::string&)>& GetPrintCallbackFunction(int level) {
-    static std::array<std::function<void(const std::string&)>, 4> callbacks;
+std::function<void(const char*)>& GetPrintCallbackFunction(int level) {
+    static std::array<std::function<void(const char*)>, 4> callbacks;
     return callbacks[level];
 }
 
-void SetPrintCallbackFunction(
-        std::function<void(const std::string&)> print_callback,
-        std::vector<int> levels) {
+void SetPrintCallbackFunction(std::function<void(const char*)> print_callback,
+                              std::vector<int> levels) {
     for (int level : levels) {
         if (level < DEBUG || level > ERROR) {
             throw std::runtime_error("invalid verbosity level");
@@ -47,7 +46,8 @@ void SetPrintCallbackFunction(
 }
 
 void Print(const std::string& msg, int level) {
-    if (GetPrintCallbackFunction(level)) GetPrintCallbackFunction(level)(msg);
+    if (GetPrintCallbackFunction(level))
+        GetPrintCallbackFunction(level)(msg.c_str());
 }
 
 std::string InitResourceDir() {
@@ -70,13 +70,13 @@ std::string& _RESOURCE_DIR() {
     return dir;
 }
 
-void SetResourceDir(const std::string& path) { _RESOURCE_DIR() = path; }
+void SetResourceDir(const char* path) { _RESOURCE_DIR() = path; }
 
-std::string GetResourceDir() { return _RESOURCE_DIR(); }
+const char* GetResourceDir() { return _RESOURCE_DIR().c_str(); }
 
-std::string GetVersionStr() { return ASR_VERSION; }
+const char* GetVersionStr() { return ASR_VERSION; }
 
-std::string GetThirdPartyNotices() {
+const char* GetThirdPartyNotices() {
     // clang-format off
     return
     #include "third_party_notices.inl"
@@ -139,7 +139,7 @@ std::shared_ptr<ASRTriangleMesh> ReconstructSurface(
     }
     num_points = points.size() / 3;
 
-    std::string model_path = GetResourceDir() + "/model.pt";
+    std::string model_path = GetResourceDir() + std::string("/model.pt");
     torch::jit::script::Module model = torch::jit::load(model_path);
     for (const auto& method : model.get_methods())
         std::cout << method.name() << "\n";
