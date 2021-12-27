@@ -14,3 +14,5 @@
 # limitations under the License.
 #
 from .asrpybind import *
+
+__version__ = get_version_str()
