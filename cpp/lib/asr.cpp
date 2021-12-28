@@ -27,6 +27,7 @@
 #include "octree.h"
 #include "postprocess.h"
 #include "preprocess.h"
+#include "utils.h"
 
 ASR_NAMESPACE_BEGIN
 
@@ -43,11 +44,6 @@ void SetPrintCallbackFunction(std::function<void(const char*)> print_callback,
         }
         GetPrintCallbackFunction(level) = print_callback;
     }
-}
-
-void Print(const std::string& msg, int level) {
-    if (GetPrintCallbackFunction(level))
-        GetPrintCallbackFunction(level)(msg.c_str());
 }
 
 std::string InitResourceDir() {

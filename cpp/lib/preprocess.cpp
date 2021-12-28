@@ -18,6 +18,7 @@
 #include <iostream>
 
 #include "nsearch.h"
+#include "utils.h"
 
 ASR_NAMESPACE_BEGIN
 
@@ -28,11 +29,11 @@ void ComputeInlierAndRadii(std::vector<char>& inlier,
                            const int k,
                            const float radius_fraction,
                            const int outlier_threshold) {
-    std::cerr << "build index\n" << std::flush;
+    PrintFN("build index\n", DEBUG);
     KDTree kdtree(points, num_points);
-    std::cerr << "compute k radius\n" << std::flush;
+    PrintFN("compute k radius\n", DEBUG);
     radii = kdtree.ComputeKRadius(k);
-    std::cerr << "compute inlier\n" << std::flush;
+    PrintFN("compute inlier\n", DEBUG);
     inlier = kdtree.ComputeInlier(radii.data(), radius_fraction, k,
                                   outlier_threshold);
 }
@@ -42,13 +43,13 @@ void ComputeInlierFromDensity(std::vector<char>& inlier,
                               const float* const radii,
                               const size_t num_points,
                               const double density_percentile_threshold) {
-    std::cerr << "build index\n" << std::flush;
+    PrintFN("build index\n", DEBUG);
     KDTree kdtree(points, num_points);
     auto radius_neighbors = kdtree.ComputeRadiusNeighbors(radii);
 
     size_t middle = (density_percentile_threshold / 100) * num_points;
     middle = std::min(num_points, std::max<size_t>(1, middle));
-    std::cerr << "partial sort\n" << std::flush;
+    PrintFN("partial sort\n", DEBUG);
     std::partial_sort(radius_neighbors.begin(),
                       radius_neighbors.begin() + middle,
                       radius_neighbors.end());
