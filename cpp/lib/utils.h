@@ -17,8 +17,8 @@
 
 #include <string>
 
-#include "asr_config.h"
 #include "asr.hpp"
+#include "asr_config.h"
 
 ASR_NAMESPACE_BEGIN
 
@@ -26,6 +26,7 @@ ASR_NAMESPACE_BEGIN
 void Print(const std::string& msg, int level);
 
 /// Like Print but prepends the function name
-#define PrintFN(msg, level) Print(std::string(__PRETTY_FUNCTION__) + ": " + msg, level)
+#define PrintFN(msg, level) \
+    Print(std::string(__PRETTY_FUNCTION__) + ": " + msg, level)
 
 ASR_NAMESPACE_END
