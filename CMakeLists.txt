@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.18 )
 
-project(adaptivesurfacereconstruction VERSION 0.1.0)
+project(adaptivesurfacereconstruction VERSION 0.2.0)
 
 option(BUILD_PYTHON_MODULE  "Build the python module" ON)
 option(BUILD_APPIMAGE  "Build the AppImage" OFF)
