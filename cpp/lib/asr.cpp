@@ -20,6 +20,7 @@
 #include <torch/script.h>
 
 #include <stdexcept>
+#include <stddef.h>
 
 #include "contouring.h"
 #include "grid.h"

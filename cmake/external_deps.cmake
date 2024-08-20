@@ -82,7 +82,7 @@ ExternalProject_Add(
     ext_open3d
     PREFIX open3d
     GIT_REPOSITORY https://github.com/isl-org/Open3D.git
-    GIT_TAG v0.14.1
+    GIT_TAG v0.18.0
     GIT_SHALLOW YES
     UPDATE_COMMAND ""
     CMAKE_ARGS

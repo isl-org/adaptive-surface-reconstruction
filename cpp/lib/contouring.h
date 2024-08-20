@@ -17,6 +17,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <stddef.h>
 
 #include "asr_config.h"
 

@@ -2,6 +2,8 @@
 
 name: Build artifacts
 
+permissions: read-all
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -18,30 +20,33 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
+
+    permissions:
+      contents: write
 
     strategy:
       matrix:
-        configuration: [py36, py37, py38, py39, appimage]
+        configuration: [py38, py39, py310, py311, appimage]
         include:
-          - configuration: py36
-            python_version: 3.6
-            build_python: ON
-            build_appimage: OFF
-          - configuration: py37
-            python_version: 3.7
-            build_python: ON
-            build_appimage: OFF
           - configuration: py38
-            python_version: 3.8
+            python_version: '3.8'
             build_python: ON
             build_appimage: OFF
           - configuration: py39
-            python_version: 3.9
+            python_version: '3.9'
+            build_python: ON
+            build_appimage: OFF
+          - configuration: py310
+            python_version: '3.10'
+            build_python: ON
+            build_appimage: OFF
+          - configuration: py311
+            python_version: '3.11'
             build_python: ON
             build_appimage: OFF
           - configuration: appimage
-            python_version: 3.9
+            python_version: 3.11
             build_python: OFF
             build_appimage: ON
 
@@ -54,7 +59,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Download model files
         run: |
@@ -66,7 +71,7 @@ jobs:
         uses: ./.github/actions/docker-action
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
         with:
           name: artifact_${{ matrix.configuration }}
           path: |
