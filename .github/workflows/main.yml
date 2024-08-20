@@ -27,7 +27,7 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [py38, py39, py310, py311, py312, appimage]
+        configuration: [py38, py39, py310, py311, appimage]
         include:
           - configuration: py38
             python_version: '3.8'
