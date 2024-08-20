@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 # Miniconda requires bash as the default shell.
 SHELL ["/bin/bash", "-c"]
