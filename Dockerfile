@@ -15,13 +15,12 @@ RUN apt-get update && apt-get install -y \
   xorg-dev \
   && rm -rf /var/lib/apt/lists/*
 
-# Miniconda
-ENV PATH="/root/miniconda3/bin:${PATH}"
-RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
- && bash Miniconda3-latest-Linux-x86_64.sh -b \
- && rm Miniconda3-latest-Linux-x86_64.sh \
- && conda --version
-
+# Miniforge
+ENV PATH="/root/miniforge3/bin:${PATH}"
+RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" \
+    && bash Miniforge3-$(uname)-$(uname -m).sh -b \
+    && rm -v Miniforge3*.sh \
+    && conda --version
 
 COPY docker_entrypoint.sh /docker_entrypoint.sh
 

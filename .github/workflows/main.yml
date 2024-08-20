@@ -30,23 +30,23 @@ jobs:
         configuration: [py38, py39, py310, py311, py312, appimage]
         include:
           - configuration: py38
-            python_version: 3.8
+            python_version: '3.8'
             build_python: ON
             build_appimage: OFF
           - configuration: py39
-            python_version: 3.9
+            python_version: '3.9'
             build_python: ON
             build_appimage: OFF
           - configuration: py310
-            python_version: 3.10
+            python_version: '3.10'
             build_python: ON
             build_appimage: OFF
           - configuration: py311
-            python_version: 3.11
+            python_version: '3.11'
             build_python: ON
             build_appimage: OFF
           - configuration: py312
-            python_version: 3.12
+            python_version: '3.12'
             build_python: ON
             build_appimage: OFF
           - configuration: appimage
