@@ -45,10 +45,6 @@ jobs:
             python_version: '3.11'
             build_python: ON
             build_appimage: OFF
-          - configuration: py312
-            python_version: '3.12'
-            build_python: ON
-            build_appimage: OFF
           - configuration: appimage
             python_version: 3.11
             build_python: OFF
