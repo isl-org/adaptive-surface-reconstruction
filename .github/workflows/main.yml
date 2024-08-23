@@ -2,6 +2,8 @@
 
 name: Build artifacts
 
+permissions: read-all
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -19,6 +21,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
+    
+    permissions:
+      contents: write
 
     strategy:
       matrix:
@@ -54,7 +59,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Download model files
         run: |
@@ -66,7 +71,7 @@ jobs:
         uses: ./.github/actions/docker-action
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
         with:
           name: artifact_${{ matrix.configuration }}
           path: |
