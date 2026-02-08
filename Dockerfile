@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
   patchelf \
   wget \
   xorg-dev \
+  wayland-protocols \
+  libwayland-dev \
   && rm -rf /var/lib/apt/lists/*
 
 # Miniforge
