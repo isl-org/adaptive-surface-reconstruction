@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
   xorg-dev \
   wayland-protocols \
   libwayland-dev \
+  libxkbcommon-dev \
   && rm -rf /var/lib/apt/lists/*
 
 # Miniforge
