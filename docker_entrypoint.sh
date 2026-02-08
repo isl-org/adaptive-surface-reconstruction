@@ -10,7 +10,7 @@ echo "==========================================================================
 
 conda create -y -n asr python=$PYTHON_VERSION
 source activate asr
-conda install -y cmake
+conda install -y "cmake<4"
 
 python -m pip install torch==1.13.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
 python -m pip install open3d==0.18.0 zstandard msgpack msgpack-numpy
