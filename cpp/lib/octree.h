@@ -15,6 +15,7 @@
 //
 #pragma once
 
+#include <stddef.h>
 #include "asr_config.h"
 #include "eigen.h"
 #include "octreebase.h"

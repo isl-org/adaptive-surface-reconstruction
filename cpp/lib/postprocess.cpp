@@ -19,6 +19,7 @@
 #include <iostream>
 #include <numeric>
 #include <unordered_set>
+#include <stddef.h>
 
 #include "nested_vector.h"
 
