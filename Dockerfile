@@ -1,4 +1,4 @@
-FROM ubuntu:22.04@sha256:adbb90115a21969d2fe6fa7f9af4253e16d45f8d4c1e930182610c4731962658
+FROM ubuntu:24.04@sha256:a4453623f2f8319cfff65c43da9be80fe83b1a7ce689579b475867d69495b782
 
 # Miniconda requires bash as the default shell.
 SHELL ["/bin/bash", "-c"]
